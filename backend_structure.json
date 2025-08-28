@@ -1,0 +1,39 @@
+{
+  "projectId": 579,
+  "featureId": 3434,
+  "generatedAt": "2025-08-27T13:24:10.915Z",
+  "task": "Task4",
+  "type": "structure",
+  "files": [
+    "backend/package.json",
+    "backend/tsconfig.json",
+    "backend/jest.config.ts",
+    "backend/.env.example",
+    "backend/.gitignore",
+    "backend/nodemon.json",
+    "backend/README.md",
+    "backend/src/server.ts",
+    "backend/src/app.ts",
+    "backend/src/config/index.ts",
+    "backend/src/core/errors/ApiError.ts",
+    "backend/src/core/errors/BadRequestError.ts",
+    "backend/src/core/errors/NotFoundError.ts",
+    "backend/src/core/logging/logger.ts",
+    "backend/src/core/middleware/errorHandler.ts",
+    "backend/src/core/middleware/notFoundHandler.ts",
+    "backend/src/core/middleware/requestLogger.ts",
+    "backend/src/core/middleware/validateRequest.ts",
+    "backend/src/core/utils/asyncHandler.ts",
+    "backend/src/database/connection.ts",
+    "backend/src/modules/README.md",
+    "backend/src/routes/index.ts",
+    "backend/src/shared/interfaces/express.d.ts",
+    "backend/tests/setup.ts",
+    "backend/tests/integration/health.test.ts"
+  ],
+  "metadata": {
+    "totalFiles": 25,
+    "executionTime": 78550,
+    "model": "gemini-2.5-pro-preview-05-06"
+  }
+}

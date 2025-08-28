@@ -1,0 +1,21 @@
+{
+  "epicId": 579,
+  "generatedAt": "2025-08-27T13:31:00.688Z",
+  "environment": "both",
+  "includeNginx": false,
+  "includeRedis": false,
+  "files": [
+    "docker-compose.yml",
+    "backend/Dockerfile",
+    "frontend/Dockerfile",
+    ".env.example",
+    ".env",
+    "backend/.dockerignore",
+    "frontend/.dockerignore"
+  ],
+  "metadata": {
+    "totalFiles": 7,
+    "executionTime": 72240,
+    "model": "gemini-2.5-pro-preview-05-06"
+  }
+}

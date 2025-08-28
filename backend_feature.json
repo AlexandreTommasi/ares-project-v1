@@ -1,0 +1,25 @@
+{
+  "projectId": 579,
+  "featureId": 3434,
+  "generatedAt": "2025-08-27T13:27:54.401Z",
+  "task": "Task1",
+  "type": "feature",
+  "files": [
+    "backend/src/core/errors/ForbiddenError.ts",
+    "backend/src/core/errors/UnauthorizedError.ts",
+    "backend/src/modules/auth/auth.types.ts",
+    "backend/src/modules/auth/auth.middleware.ts",
+    "backend/src/modules/game/game.types.ts",
+    "backend/src/modules/game/game.validation.ts",
+    "backend/src/modules/game/game.service.ts",
+    "backend/src/modules/game/game.controller.ts",
+    "backend/src/modules/game/game.routes.ts",
+    "backend/src/shared/interfaces/express.d.ts",
+    "backend/tests/integration/game.test.ts"
+  ],
+  "metadata": {
+    "totalFiles": 11,
+    "executionTime": 81385,
+    "model": "gemini-2.5-pro-preview-05-06"
+  }
+}

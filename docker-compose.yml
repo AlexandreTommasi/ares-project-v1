@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: api_service
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+      - DB_SERVER=db_service # Comunicação interna via nome do serviço
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      # Monta o código fonte para hot-reload em desenvolvimento
+      - ./backend:/usr/src/app
+      # Volumes anônimos para evitar que node_modules e dist sejam sobrescritos pelo host
+      - /usr/src/app/node_modules
+      - /usr/src/app/dist
+    command: npm run dev
+    networks:
+      - app_network
+    depends_on:
+      db_service:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: client_service
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    environment:
+      # A URL da API aponta para o backend como visto pelo navegador no host
+      - VITE_API_URL=http://localhost:3000/api
+    volumes:
+      # Monta o código fonte para hot-reload em desenvolvimento
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev
+    networks:
+      - app_network
+    depends_on:
+      - backend
+
+  db_service:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: db_service
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "${DB_PORT}:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    healthcheck:
+        test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "${DB_USER}", "-P", "${SA_PASSWORD}", "-Q", "SELECT 1"]
+        interval: 10s
+        timeout: 5s
+        retries: 10
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  sqlserver_data:
+    driver: local

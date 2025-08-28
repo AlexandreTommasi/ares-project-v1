@@ -1,0 +1,7 @@
+{
+  "type": "monorepo",
+  "hasBackend": true,
+  "hasFrontend": true,
+  "backendPath": "backend",
+  "frontendPath": "frontend"
+}
